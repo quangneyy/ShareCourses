@@ -13,7 +13,7 @@ namespace ShareCourses.Models.EF
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required] 
         [StringLength(150)]
         public string Title { get; set; }
         public string Description { get; set; }
@@ -23,6 +23,6 @@ namespace ShareCourses.Models.EF
         public string SeoTitle { get; set; }
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
-        public virtual Posts Posts { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
