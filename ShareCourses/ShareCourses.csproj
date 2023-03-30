@@ -180,9 +180,18 @@
     <Compile Include="Migrations\202303300643145_CreatedDatabase.Designer.cs">
       <DependentUpon>202303300643145_CreatedDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303301010027_UpdateCategory.cs" />
+    <Compile Include="Migrations\202303301010027_UpdateCategory.Designer.cs">
+      <DependentUpon>202303301010027_UpdateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303301028350_UpdateData.cs" />
+    <Compile Include="Migrations\202303301028350_UpdateData.Designer.cs">
+      <DependentUpon>202303301028350_UpdateData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
+    <Compile Include="Models\Common\Filter.cs" />
     <Compile Include="Models\EF\Adv.cs" />
     <Compile Include="Models\EF\Category.cs" />
     <Compile Include="Models\EF\Contact.cs" />
@@ -2188,6 +2197,8 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartiaSidebar.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2237,7 +2248,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2255,6 +2265,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202303300643145_CreatedDatabase.resx">
       <DependentUpon>202303300643145_CreatedDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303301010027_UpdateCategory.resx">
+      <DependentUpon>202303301010027_UpdateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303301028350_UpdateData.resx">
+      <DependentUpon>202303301028350_UpdateData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

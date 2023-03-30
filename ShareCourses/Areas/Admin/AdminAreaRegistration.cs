@@ -18,7 +18,7 @@ namespace ShareCourses.Areas.Admin
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "ShareCourses.Controllers" }
+                namespaces: new[] { "ShareCourses.Areas.Admin.Controllers" }
             );
         }
     }
