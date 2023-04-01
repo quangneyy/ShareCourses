@@ -59,33 +59,36 @@
                 </thead>
                 <tbody>
                     @if (Model != null  && Model.Any())
-                        {
+                     {
                         var i = 1;
                         foreach(var item in Model)
-                {
-                    <tr>
-                        <td>@i</td>
-                        <td>@item.Title</td>
-                        <td>@item.Position</td>
-                        <td>
-                            <a href="/admin/category/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
-                            <a href="/admin/category/delete/@item.Id" class="btn btn-sm btn-danger">Xóa</a>
-                        </td>
-                    </tr>
+                        {
+                        <tr id="trow_@item.Id">
+                            <td>@i</td>
+                            <td>@item.Title</td>
+                            <td>@item.Position</td>
+                            <td>
+                                <a href="/admin/category/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                            </td>
+                        </tr>
                             i++;
                         }
 
+                     }
+                    else 
+                    { 
+                        <tr>
+                            <td colspan="4">Không có bản ghi</td>
+                        </tr>
                     }
-             else { 
-                <th>
-                    <td colspan="4">Không có bản ghi</td>
-                </th>
-            }
                 </tbody>
             </table>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
+
+
         </div>
         <!-- /.card-footer-->
     </div>
@@ -93,3 +96,26 @@
 
 </section>
 <!-- /.content -->
+@section scripts
+{
+    <script>
+        $(document).ready(function(){
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id")
+                var conf = confirm('Bạn có muốn xóa bản ghi này không?');
+                if (conf === true) {
+                    $.ajax({
+                        url: '/admin/category/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

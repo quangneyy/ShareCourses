@@ -1,4 +1,4 @@
-﻿using ShareCourses.Models;
+﻿ using ShareCourses.Models;
 using ShareCourses.Models.EF;
 using System;
 using System.Collections.Generic;
@@ -69,5 +69,19 @@ namespace ShareCourses.Areas.Admin.Controllers
             }
             return View(model);
         }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var item = db.Categories.Find(id);
+            if (item != null)
+            {
+                //var DeleteItem = db.Categories.Attach(item);
+                db.Categories.Remove(item);
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
+
     }
 }
