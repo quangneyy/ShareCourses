@@ -184,6 +184,7 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductImagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -214,6 +215,18 @@
     <Compile Include="Migrations\202303311444017_updateIndexProductCategory.cs" />
     <Compile Include="Migrations\202303311444017_updateIndexProductCategory.designer.cs">
       <DependentUpon>202303311444017_updateIndexProductCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304010657297_UpdateProduct.cs" />
+    <Compile Include="Migrations\202304010657297_UpdateProduct.designer.cs">
+      <DependentUpon>202304010657297_UpdateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304010705531_UpdateProduct_Edit1.cs" />
+    <Compile Include="Migrations\202304010705531_UpdateProduct_Edit1.designer.cs">
+      <DependentUpon>202304010705531_UpdateProduct_Edit1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304011601213_fix.cs" />
+    <Compile Include="Migrations\202304011601213_fix.designer.cs">
+      <DependentUpon>202304011601213_fix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3143,6 +3156,9 @@
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Add.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductImages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutEmpty.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3155,7 +3171,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Uploads\files\272200866_486980299436958_2365431773962677149_n.png" />
-    <Content Include="Uploads\images\272200866_486980299436958_2365431773962677149_n.png" />
     <Content Include="Uploads\_thumbs\Files\272200866_486980299436958_2365431773962677149_n.png" />
     <Content Include="Uploads\_thumbs\Images\258116258_365666925043886_7096546652542959625_n.jpg" />
     <Content Include="Uploads\_thumbs\Images\272200866_486980299436958_2365431773962677149_n.png" />
@@ -3231,6 +3246,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303311444017_updateIndexProductCategory.resx">
       <DependentUpon>202303311444017_updateIndexProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304010657297_UpdateProduct.resx">
+      <DependentUpon>202304010657297_UpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304010705531_UpdateProduct_Edit1.resx">
+      <DependentUpon>202304010705531_UpdateProduct_Edit1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304011601213_fix.resx">
+      <DependentUpon>202304011601213_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
