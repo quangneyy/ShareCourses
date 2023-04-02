@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using ShareCourses.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace ShareCourses.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -59,6 +62,16 @@ namespace ShareCourses.Areas.Admin.Controllers
 
 
         //
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
+
+        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -81,7 +94,7 @@ namespace ShareCourses.Areas.Admin.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -98,12 +111,13 @@ namespace ShareCourses.Areas.Admin.Controllers
         }
 
 
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Create()
         {
-            ViewBag.Role = new SelectList(db.Roles.ToList(), "Id", "Name");
+            ViewBag.Role = new SelectList(db.Roles.ToList(), "Name", "Name");
             return View();
         }
 
@@ -126,6 +140,8 @@ namespace ShareCourses.Areas.Admin.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    UserManager.AddToRole(user.Id,model.Role);
                     //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -138,9 +154,18 @@ namespace ShareCourses.Areas.Admin.Controllers
                 }
                 AddErrors(result);
             }
-            ViewBag.Role = new SelectList(db.Roles.ToList(), "Id", "Name");
+            ViewBag.Role = new SelectList(db.Roles.ToList(), "Name", "Name");
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -149,6 +174,14 @@ namespace ShareCourses.Areas.Admin.Controllers
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error);
+            }
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
             }
         }
     }

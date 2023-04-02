@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ShareCourses.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

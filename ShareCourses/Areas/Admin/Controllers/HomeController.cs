@@ -6,12 +6,13 @@ using System.Web.Mvc;
 
 namespace ShareCourses.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin,Employee")]
     public class HomeController : Controller
     {
         // GET: Admin/Home
         public ActionResult Index()
         {
+
             return View();
         }
     }
