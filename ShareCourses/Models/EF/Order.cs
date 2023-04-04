@@ -8,9 +8,9 @@ using System.Web;
 namespace ShareCourses.Models.EF
 {
     [Table("tb_Order")]
-    public class Order
+    public class Order : CommonAbstract
     {
-        public Order()
+        public Order() 
         {
             this.OrderDetails = new HashSet<OrderDetail>();
         }
@@ -27,7 +27,8 @@ namespace ShareCourses.Models.EF
         public string Address { get; set; }
         public decimal TotalAmount { get; set; }
         public int Quantity { get; set; }
-
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public int TypePayment { get; set; }
+        public string Email { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

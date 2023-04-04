@@ -183,12 +183,14 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductImagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingSystemController.cs" />
+    <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -201,6 +203,10 @@
     <Compile Include="Migrations\202304020450007_CreatedDataBase.cs" />
     <Compile Include="Migrations\202304020450007_CreatedDataBase.designer.cs">
       <DependentUpon>202304020450007_CreatedDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304040619261_Updatekey12.cs" />
+    <Compile Include="Migrations\202304040619261_Updatekey12.designer.cs">
+      <DependentUpon>202304040619261_Updatekey12.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3304,6 +3310,9 @@
     <Content Include="Content\assets\dist\js\.eslintrc.json" />
     <Content Include="Content\assets\dist\js\adminlte.js.map" />
     <Content Include="Content\assets\dist\js\adminlte.min.js.map" />
+    <Content Include="Areas\Admin\Views\Oder\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Oder\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Oder\Partial_SanPham.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3386,6 +3395,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202304020450007_CreatedDataBase.resx">
       <DependentUpon>202304020450007_CreatedDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304040619261_Updatekey12.resx">
+      <DependentUpon>202304040619261_Updatekey12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
