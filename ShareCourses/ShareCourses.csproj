@@ -46,6 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CKFinder, Version=2.4.0.2631, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Content\ckfinder\bin\Release\CKFinder.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -193,6 +197,7 @@
     <Compile Include="Areas\Admin\Controllers\StatisticalController.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\SettingHelper.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -292,12 +297,15 @@
     <Content Include="Content\assets\dist\js\pages\dashboard.js" />
     <Content Include="Content\assets\dist\js\pages\dashboard2.js" />
     <Content Include="Content\assets\dist\js\pages\dashboard3.js" />
+    <Content Include="Content\assets\images\about.jpg" />
     <Content Include="Content\assets\images\banner_1.jpg" />
     <Content Include="Content\assets\images\banner_2.jpg" />
     <Content Include="Content\assets\images\banner_3.jpg" />
     <Content Include="Content\assets\images\blog_1.jpg" />
     <Content Include="Content\assets\images\blog_2.jpg" />
     <Content Include="Content\assets\images\blog_3.jpg" />
+    <Content Include="Content\assets\images\content.jpg" />
+    <Content Include="Content\assets\images\dealofweek.jpg" />
     <Content Include="Content\assets\images\deal_ofthe_week.png" />
     <Content Include="Content\assets\images\desc_1.jpg" />
     <Content Include="Content\assets\images\desc_2.jpg" />
@@ -1408,6 +1416,7 @@
     <Content Include="Content\clients\dist\css\alt\adminlte.pages.min.css" />
     <Content Include="Content\clients\dist\css\alt\adminlte.plugins.css" />
     <Content Include="Content\clients\dist\css\alt\adminlte.plugins.min.css" />
+    <Content Include="Content\clients\dist\img\admin-icon.png" />
     <Content Include="Content\clients\dist\img\AdminLTELogo.png" />
     <Content Include="Content\clients\dist\img\avatar.png" />
     <Content Include="Content\clients\dist\img\avatar2.png" />
@@ -1424,15 +1433,24 @@
     <Content Include="Content\clients\dist\img\credit\visa.png" />
     <Content Include="Content\clients\dist\img\default-150x150.png" />
     <Content Include="Content\clients\dist\img\icons.png" />
+    <Content Include="Content\clients\dist\img\logo.jpg" />
+    <Content Include="Content\clients\dist\img\nam.jpg" />
     <Content Include="Content\clients\dist\img\photo1.png" />
     <Content Include="Content\clients\dist\img\photo2.png" />
     <Content Include="Content\clients\dist\img\photo3.jpg" />
     <Content Include="Content\clients\dist\img\photo4.jpg" />
+    <Content Include="Content\clients\dist\img\phuc.jpg" />
     <Content Include="Content\clients\dist\img\prod-1.jpg" />
     <Content Include="Content\clients\dist\img\prod-2.jpg" />
     <Content Include="Content\clients\dist\img\prod-3.jpg" />
     <Content Include="Content\clients\dist\img\prod-4.jpg" />
     <Content Include="Content\clients\dist\img\prod-5.jpg" />
+    <Content Include="Content\clients\dist\img\quang.jpg" />
+    <Content Include="Content\clients\dist\img\Team_1.jpg" />
+    <Content Include="Content\clients\dist\img\team_2.jpg" />
+    <Content Include="Content\clients\dist\img\team_3.jpg" />
+    <Content Include="Content\clients\dist\img\team_4.jpg" />
+    <Content Include="Content\clients\dist\img\tuong.jpg" />
     <Content Include="Content\clients\dist\img\user1-128x128.jpg" />
     <Content Include="Content\clients\dist\img\user2-160x160.jpg" />
     <Content Include="Content\clients\dist\img\user3-128x128.jpg" />
@@ -3285,6 +3303,63 @@
     <Content Include="Content\clients\plugins\uplot\uPlot.iife.js" />
     <Content Include="Content\clients\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\clients\plugins\uplot\uPlot.min.css" />
+    <Content Include="Content\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style.min.css" />
+    <Content Include="Content\img\about.jpg" />
+    <Content Include="Content\img\blog-1.jpg" />
+    <Content Include="Content\img\blog-2.jpg" />
+    <Content Include="Content\img\blog-3.jpg" />
+    <Content Include="Content\img\blog-80x80.jpg" />
+    <Content Include="Content\img\carousel-1.jpg" />
+    <Content Include="Content\img\carousel-2.jpg" />
+    <Content Include="Content\img\carousel-3.jpg" />
+    <Content Include="Content\img\cat-1.jpg" />
+    <Content Include="Content\img\cat-2.jpg" />
+    <Content Include="Content\img\cat-3.jpg" />
+    <Content Include="Content\img\cat-4.jpg" />
+    <Content Include="Content\img\cat-5.jpg" />
+    <Content Include="Content\img\cat-6.jpg" />
+    <Content Include="Content\img\cat-7.jpg" />
+    <Content Include="Content\img\cat-8.jpg" />
+    <Content Include="Content\img\course-1.jpg" />
+    <Content Include="Content\img\course-2.jpg" />
+    <Content Include="Content\img\course-3.jpg" />
+    <Content Include="Content\img\course-4.jpg" />
+    <Content Include="Content\img\course-5.jpg" />
+    <Content Include="Content\img\course-6.jpg" />
+    <Content Include="Content\img\page-header.jpg" />
+    <Content Include="Content\img\registration.jpg" />
+    <Content Include="Content\img\team-1.jpg" />
+    <Content Include="Content\img\team-2.jpg" />
+    <Content Include="Content\img\team-3.jpg" />
+    <Content Include="Content\img\team-4.jpg" />
+    <Content Include="Content\img\testimonial-1.jpg" />
+    <Content Include="Content\img\testimonial-2.jpg" />
+    <Content Include="Content\img\testimonial-3.jpg" />
+    <Content Include="Content\img\testimonial-4.jpg" />
+    <Content Include="Content\img\user.jpg" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\lib\easing\easing.js" />
+    <Content Include="Content\lib\easing\easing.min.js" />
+    <Content Include="Content\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Content\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Content\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Content\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Content\mail\contact.js" />
+    <Content Include="Content\mail\contact.php" />
+    <Content Include="Content\mail\jqBootstrapValidation.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\templates\send1.html" />
@@ -3483,6 +3558,7 @@
     <Content Include="Content\clients\plugins\summernote\summernote.js.map" />
     <Content Include="Content\clients\plugins\summernote\summernote.min.js.map" />
     <Content Include="Content\clients\plugins\toastr\toastr.js.map" />
+    <Content Include="Content\lib\owlcarousel\LICENSE" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

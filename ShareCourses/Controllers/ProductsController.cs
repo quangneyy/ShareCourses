@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using System.Web.UI;
 using ShareCourses.Models;
+using ShareCourses.Models.EF;
 
 namespace ShareCourses.Controllers
 {
@@ -14,7 +17,6 @@ namespace ShareCourses.Controllers
         public ActionResult Index()
         {
             var items = db.Products.ToList();
-            
             return View(items);
         }
 

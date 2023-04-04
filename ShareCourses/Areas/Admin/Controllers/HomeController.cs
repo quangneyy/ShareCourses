@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ShareCourses.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin,Employee")]
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         // GET: Admin/Home

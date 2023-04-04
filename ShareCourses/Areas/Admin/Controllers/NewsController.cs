@@ -9,7 +9,7 @@ using ShareCourses.Models.EF;
 
 namespace ShareCourses.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin,Employee")]
+    [Authorize(Roles = "Admin")]
     public class NewsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
