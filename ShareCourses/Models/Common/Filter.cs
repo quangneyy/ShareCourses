@@ -67,6 +67,11 @@ namespace ShareCourses.Models.Common
             return str.ToLower();
         }
 
+        public static string FormatNumber(string str)
+        {
+            return str.ToLower();
+        }
+
         public static string ChuyenCoDauThanhKhongDau(string str)
         {
             str = str.Trim();

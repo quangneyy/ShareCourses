@@ -13,64 +13,51 @@ namespace ShareCourses.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View();
+            var items = db.Products.ToList();
+            
+            return View(items);
         }
 
-        public ActionResult Parial_ItemsByCateId()
+        public ActionResult Detail(string alias,int id)
+        {
+            var item = db.Products.Find(id);
+            if (item != null)
+            {
+                db.Products.Attach(item);
+                item.ViewCount = item.ViewCount + 1;
+                db.Entry(item).Property(x => x.ViewCount).IsModified = true;
+                db.SaveChanges();
+            }
+            
+            return View(item);
+        }
+        public ActionResult ProductCategory(string alias,int id)
+        {
+            var items = db.Products.ToList();
+            if (id > 0)
+            {
+                items = items.Where(x => x.ProductCategoryId == id).ToList();
+            }
+            var cate = db.ProductCategories.Find(id);
+            if (cate != null)
+            {
+                ViewBag.CateName = cate.Title;
+            }
+
+            ViewBag.CateId = id;
+            return View(items);
+        }
+
+        public ActionResult Partial_ItemsByCateId()
         {
             var items = db.Products.Where(x => x.IsHome && x.IsActive).Take(12).ToList();
             return PartialView(items);
         }
 
-        public ActionResult Parial_ProductSales()
+        public ActionResult Partial_ProductSales()
         {
             var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(12).ToList();
             return PartialView(items);
         }
-
-        //[HttpPost]
-
-        //public ActionResult IsActive(int id)
-        //{
-        //    var item = db.Products.Find(id);
-        //    if (item != null)
-        //    {
-        //        item.IsActive = !item.IsActive;
-        //        db.Entry(item).State = System.Data.Entity.EntityState.Modified;
-        //        db.SaveChanges();
-        //        return Json(new { success = true, isAcive = item.IsActive });
-        //    }
-        //    return Json(new { success = false });
-        //}
-
-        //[HttpPost]
-
-        //public ActionResult IsHome(int id)
-        //{
-        //    var item = db.Products.Find(id);
-        //    if (item != null)
-        //    {
-        //        item.IsActive = !item.IsHome;
-        //        db.Entry(item).State = System.Data.Entity.EntityState.Modified;
-        //        db.SaveChanges();
-        //        return Json(new { success = true, IsHome = item.IsHome });
-        //    }
-        //    return Json(new { success = false });
-        //}
-
-        //[HttpPost]
-
-        //public ActionResult IsSale(int id)
-        //{
-        //    var item = db.Products.Find(id);
-        //    if (item != null)
-        //    {
-        //        item.IsSale = !item.IsSale;
-        //        db.Entry(item).State = System.Data.Entity.EntityState.Modified;
-        //        db.SaveChanges();
-        //        return Json(new { success = true, IsSale = item.IsSale });
-        //    }
-        //    return Json(new { success = false });
-        //}
     }
 }

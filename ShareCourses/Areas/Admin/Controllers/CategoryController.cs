@@ -1,13 +1,14 @@
-﻿ using ShareCourses.Models;
-using ShareCourses.Models.EF;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShareCourses.Models;
+using ShareCourses.Models.EF;
 
 namespace ShareCourses.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -30,10 +31,9 @@ namespace ShareCourses.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 model.CreatedDate = DateTime.Now;
-                model.ModifiedrDate = DateTime.Now;
+                model.ModifiedDate = DateTime.Now;
                 model.Alias = ShareCourses.Models.Common.Filter.FilterChar(model.Title);
                 db.Categories.Add(model);
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -45,7 +45,6 @@ namespace ShareCourses.Areas.Admin.Controllers
             var item = db.Categories.Find(id);
             return View(item);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Category model)
@@ -53,22 +52,24 @@ namespace ShareCourses.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Categories.Attach(model);
-                model.ModifiedrDate = DateTime.Now;
+                model.ModifiedDate = DateTime.Now;
                 model.Alias = ShareCourses.Models.Common.Filter.FilterChar(model.Title);
                 db.Entry(model).Property(x => x.Title).IsModified = true;
                 db.Entry(model).Property(x => x.Description).IsModified = true;
+                db.Entry(model).Property(x => x.Link).IsModified = true;
                 db.Entry(model).Property(x => x.Alias).IsModified = true;
                 db.Entry(model).Property(x => x.SeoDescription).IsModified = true;
                 db.Entry(model).Property(x => x.SeoKeywords).IsModified = true;
                 db.Entry(model).Property(x => x.SeoTitle).IsModified = true;
                 db.Entry(model).Property(x => x.Position).IsModified = true;
-                db.Entry(model).Property(x => x.ModifiedrDate).IsModified = true;
-                db.Entry(model).Property(x => x.ModifiedBy).IsModified = true;
+                db.Entry(model).Property(x => x.ModifiedDate).IsModified = true;
+                db.Entry(model).Property(x => x.Modifiedby).IsModified = true;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(model);
         }
+
         [HttpPost]
         public ActionResult Delete(int id)
         {
@@ -82,6 +83,5 @@ namespace ShareCourses.Areas.Admin.Controllers
             }
             return Json(new { success = false });
         }
-
     }
 }

@@ -1,8 +1,9 @@
 ﻿@model ShareCourses.Models.EF.News
 @{
-    ViewBag.Title = "Cập nhập tin tức";
+    ViewBag.Title = "Cập nhật tin tức";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 
 @section naviheader{
     <!-- Left navbar links -->
@@ -17,22 +18,23 @@
             <a href="/admin/news" class="nav-link">Tin tức</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Cập nhập</a>
+            <a href="#" class="nav-link">Cập nhật</a>
         </li>
     </ul>
 }
+
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cập nhập Tin tức</h1>
+                <h1>Thêm mới Tin tức</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Tin tức</a></li>
-                    <li class="breadcrumb-item active">Cập nhập</li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
                 </ol>
             </div>
         </div>
@@ -45,23 +47,21 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Thông tin Cập nhập Tin tức</h3>
-
-
+            <h3 class="card-title">Thông tin Cập nhật Tin tức</h3>
         </div>
         <div class="card-body">
             @if (Model != null)
-             {
+            {
                 <div class="bs-stepper-content">
                     @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { }))
-                     {
+                    {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
                         @Html.HiddenFor(x => x.Id)
                         @Html.HiddenFor(x => x.CategoryId)
                         @Html.HiddenFor(x => x.CreatedDate)
                         <!-- your steps content here -->
-                    <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tiêu đề</label>
                             @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
@@ -71,7 +71,7 @@
                             <label for="exampleInputFile">Ảnh đại diện</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    @Html.TextBoxFor(x => x.Image, new { @id = "textImage", @class = "form-control" })
+                                    @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
                                 </div>
                                 <div class="input-group-append">
                                     <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
@@ -83,20 +83,20 @@
                             @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Chi tiết</label>
-                            @Html.TextBoxFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
+                            <label for="exampleInputPassword1">Chi tiết</label>
+                            @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Hiển thị</label>
                             @Html.CheckBoxFor(x => x.IsActive)
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">SeoTitle</label>
+                            <label for="exampleInputPassword1">Seo title</label>
                             @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">SeoDescription</label>
-                                @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">SeoDescription</label>
+                            @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">SeoKeywords</label>
@@ -104,32 +104,34 @@
                         </div>
 
                         <div class="form-group">
-                            <a href="/admin/news" class="btn btn-primary">Quay lại</a>
                             <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a href="/admin/news" class="btn btn-danger">Quay lại</a>
                         </div>
                     </div>
 
-                     }
-                </div>
-             }
-            
-        </div>
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
+                    }
 
+                </div>
+            }
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
     </div>
-    <!-- /.card-footer-->
     <!-- /.card -->
 
 </section>
 <!-- /.content -->
-@section scripts{
+
+@section  scripts{
     <script>
         $(document).ready(function () {
             CKEDITOR.replace('txtDetail', {
                 customConfig: '/content/ckeditor/config.js',
-                extraAllowedContent:'span',
+                extraAllowedContent: 'span',
             });
         });
         function BrowseServer(field) {
@@ -139,6 +141,6 @@
             };
             finder.popup();
         }
+
     </script>
 }
-

@@ -1,10 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Shop Online";
+    ViewBag.SeoDescription = "Shop Online";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
 <!-- Slider -->
 
-<div class="main_slider" style="background-image:url(../Content/assets/images/slider_1.jpg)">
+<div class="main_slider" style="background-image:url(Content/assets/images/slider_1.jpg)">
     <div class="container fill_height">
         <div class="row align-items-center fill_height">
             <div class="col">
@@ -19,34 +20,7 @@
 </div>
 
 <!-- Banner -->
-@*@Html.Action("MenuProductCategory", "Menu")*@
-<div class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="banner_item align-items-center" style="background-image: url(../Content/assets/images/banner_1.jpg)">
-                    <div class="banner_category">
-                        <a href="categories.html">women's</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="banner_item align-items-center" style="background-image: url(../Content/assets/images/banner_2.jpg)">
-                    <div class="banner_category">
-                        <a href="categories.html">accessories's</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="banner_item align-items-center" style="background-image: url(../Content/assets/images/banner_3.jpg)">
-                    <div class="banner_category">
-                        <a href="categories.html">men's</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@Html.Action("MenuProductCategory", "Menu")
 
 <!-- New Arrivals -->
 
@@ -63,7 +37,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="deal_ofthe_week_img">
-                    <img src="../Content/assets/images/deal_ofthe_week.png" alt="">
+                    <img src="~/Content/assets/images/deal_ofthe_week.png" alt="">
                 </div>
             </div>
             <div class="col-lg-6 text-right deal_ofthe_week_col">
@@ -97,8 +71,7 @@
 </div>
 
 <!-- Best Sellers -->
-@Html.Action("Parial_ProductSales", "Products");
-
+@Html.Action("Partial_ProductSales", "Products")
 <!-- Benefit -->
 
 <div class="benefit">
@@ -145,47 +118,4 @@
 </div>
 
 <!-- Blogs -->
-
-<div class="blogs">
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <div class="section_title">
-                    <h2>Latest Blogs</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row blogs_container">
-            <div class="col-lg-4 blog_item_col">
-                <div class="blog_item">
-                    <div class="blog_background" style="background-image:url(images/blog_1.jpg)"></div>
-                    <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-                        <h4 class="blog_title">Here are the trends I see coming this fall</h4>
-                        <span class="blog_meta">by admin | dec 01, 2017</span>
-                        <a class="blog_more" href="#">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 blog_item_col">
-                <div class="blog_item">
-                    <div class="blog_background" style="background-image:url(images/blog_2.jpg)"></div>
-                    <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-                        <h4 class="blog_title">Here are the trends I see coming this fall</h4>
-                        <span class="blog_meta">by admin | dec 01, 2017</span>
-                        <a class="blog_more" href="#">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 blog_item_col">
-                <div class="blog_item">
-                    <div class="blog_background" style="background-image:url(images/blog_3.jpg)"></div>
-                    <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-                        <h4 class="blog_title">Here are the trends I see coming this fall</h4>
-                        <span class="blog_meta">by admin | dec 01, 2017</span>
-                        <a class="blog_more" href="#">Read more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@Html.Action("Partial_News_Home", "News")

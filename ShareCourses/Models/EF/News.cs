@@ -9,14 +9,13 @@ using System.Web.Mvc;
 namespace ShareCourses.Models.EF
 {
     [Table("tb_News")]
-    public class News: CommonAbstract
+    public class News :CommonAbstract
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required(ErrorMessage ="Bạn không được để trống tiêu đề tin")]
+        [Required(ErrorMessage = "Bạn không để trống tiêu đề tin")]
         [StringLength(150)]
-
         public string Title { get; set; }
         public string Alias { get; set; }
         public string Description { get; set; }

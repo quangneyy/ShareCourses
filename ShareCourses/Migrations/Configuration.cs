@@ -1,4 +1,5 @@
-﻿namespace ShareCourses.Migrations
+﻿
+namespace ShareCourses.Migrations
 {
     using System;
     using System.Data.Entity;

@@ -8,7 +8,7 @@ using System.Web;
 namespace ShareCourses.Models.EF
 {
     [Table("tb_ProductCategory")]
-    public class ProductCategory : CommonAbstract
+    public class ProductCategory:CommonAbstract
     {
         public ProductCategory()
         {
@@ -32,6 +32,7 @@ namespace ShareCourses.Models.EF
         public string SeoDescription { get; set; }
         [StringLength(250)]
         public string SeoKeywords { get; set; }
+
         public ICollection<Product> Products { get; set; }
     }
 }

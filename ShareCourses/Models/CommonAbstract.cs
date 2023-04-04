@@ -5,11 +5,11 @@ using System.Web;
 
 namespace ShareCourses.Models
 {
-    public class CommonAbstract
+    public abstract class CommonAbstract
     {
-        public string CreateBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedrDate { get; set; }
-        public string ModifiedBy{ get; set; }
+        public DateTime ModifiedDate { get; set; }
+        public string Modifiedby { get; set; }
     }
 }
