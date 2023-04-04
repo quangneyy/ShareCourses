@@ -19,6 +19,20 @@ namespace ShareCourses
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "ShareCourses.Controllers" }
             );
+
+            routes.MapRoute(
+              name: "DetailNew",
+              url: "{alias}-Sn{id}",
+              defaults: new { controller = "News", action = "Detail", id = UrlParameter.Optional },
+              namespaces: new[] { "ShareCourses.Controllers" }
+          );
+
+            routes.MapRoute(
+               name: "NewsList",
+               url: "tin-tuc",
+               defaults: new { controller = "News", action = "Index", id = UrlParameter.Optional },
+               namespaces: new[] { "ShareCourses.Controllers" }
+           );
         }
     }
 }
